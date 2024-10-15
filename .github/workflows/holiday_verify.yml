@@ -7,6 +7,8 @@ jobs:
   ##### 祝日かどうか確認 #####
   check_holiday:
     runs-on: ubuntu-22.04
+    outputs:
+        holiday: ${{ steps.is_holiday.outputs.holiday }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -34,7 +36,7 @@ jobs:
 
   ##### 後続ジョブ #####
   subsequent_job:
-    needs: [check_holiday]
+    needs: check_holiday
     if: needs.check_holiday.outputs.holiday != true
     runs-on: ubuntu-22.04
     permissions:
