@@ -21,7 +21,16 @@ jobs:
             const holiday_jp = require(`${process.env.GITHUB_WORKSPACE}/node_modules/@holiday-jp/holiday_jp`);
             const yesterday = new Date();
             yesterday.setDate(yesterday.getDate() - 1); // 日付を1日減らして「昨日」にする
-            core.setOutput('holiday', holiday_jp.isHoliday(yesterday));
+
+            // 日付を標準出力に表示
+            console.log(`昨日の日付: ${yesterday.toISOString()}`);
+
+            // 昨日が祝日かどうかを確認
+            const isHoliday = holiday_jp.isHoliday(yesterday);
+            console.log(`昨日は祝日か: ${isHoliday}`);
+
+            // 結果をセット
+            core.setOutput('holiday', isHoliday);
 
   ##### 後続ジョブ #####
   subsequent_job:
