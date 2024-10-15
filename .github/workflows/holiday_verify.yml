@@ -46,4 +46,4 @@ jobs:
       - name: ls job
         run: ls -alt
       - name: Debug holiday output
-        run: echo "Holiday output: ${{ needs.check_holiday.outputs.holiday }}"
+        run: echo "Holiday output ${{ needs.check_holiday.outputs.holiday }}"
