@@ -37,7 +37,7 @@ jobs:
   ##### 後続ジョブ #####
   subsequent_job:
     needs: check_holiday
-    if: needs.check_holiday.outputs.holiday != true
+    if: needs.check_holiday.outputs.holiday != 'true'
     runs-on: ubuntu-22.04
     permissions:
       id-token: write
