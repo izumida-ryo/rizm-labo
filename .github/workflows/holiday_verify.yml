@@ -42,9 +42,7 @@ jobs:
             const jstDate = new Date(yesterday.toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
             
             // 日付を標準出力に表示
-            //console.log(`昨日の日付: ${yesterday.toISOString()}`);
             console.log("JST Date and Time: ", jstDate);
-            const isHoliday = holiday_jp.isHoliday(jstDate);
 
             // 昨日が祝日かどうかを確認
             const isHoliday = holiday_jp.isHoliday(jstDate);
