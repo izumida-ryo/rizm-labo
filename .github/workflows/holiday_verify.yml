@@ -36,7 +36,7 @@ jobs:
 
             core.setOutput('holiday', holiday_jp.isHoliday(jstDate));
 
-            # 前日が祝日の時の検証
+#          # 前日が祝日の時の検証
 #          script: |
 #            const holiday_jp = require(`${process.env.GITHUB_WORKSPACE}/node_modules/@holiday-jp/holiday_jp`);
 #            const yesterday = new Date();
