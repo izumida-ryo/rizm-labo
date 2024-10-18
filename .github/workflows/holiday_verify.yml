@@ -24,10 +24,9 @@ jobs:
             const jstDate = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
 
             // JST日付をコンソールに出力
-            console.log("JST Date and Time: ", jstDate.toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
-            
+            console.log("JST Date and Time: ", jstDate);
             // 現在の日付をUTCでも出力して確認
-            console.log("UTC Date and Time: ", new Date().toLocaleString('en-US', { timeZone: 'UTC' }));
+            console.log("UTC Date and Time: ", new Date());
             
             // 祝日かどうかの判定
             const isHoliday = holiday_jp.isHoliday(jstDate);
