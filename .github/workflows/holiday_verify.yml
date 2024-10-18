@@ -16,9 +16,26 @@ jobs:
       - uses: actions/github-script@v7
         id: is_holiday
         with:
+#          script: |
+#            const holiday_jp = require(`${process.env.GITHUB_WORKSPACE}/node_modules/@holiday-jp/holiday_jp`)
+#            core.setOutput('holiday', holiday_jp.isHoliday(new Date()));
           script: |
             const holiday_jp = require(`${process.env.GITHUB_WORKSPACE}/node_modules/@holiday-jp/holiday_jp`)
-            core.setOutput('holiday', holiday_jp.isHoliday(new Date()));
+            const jstDate = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
+
+            // JST日付をコンソールに出力
+            console.log("JST Date and Time: ", jstDate.toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
+            
+            // 現在の日付をUTCでも出力して確認
+            console.log("UTC Date and Time: ", new Date().toLocaleString('en-US', { timeZone: 'UTC' }));
+            
+            // 祝日かどうかの判定
+            const isHoliday = holiday_jp.isHoliday(jstDate);
+            
+            // 判定結果を出力
+            console.log("Is Holiday: ", isHoliday);
+
+            core.setOutput('holiday', holiday_jp.isHoliday(jstDate));
 # 前日が祝日の時の検証
 #          script: |
 #            const holiday_jp = require(`${process.env.GITHUB_WORKSPACE}/node_modules/@holiday-jp/holiday_jp`);
